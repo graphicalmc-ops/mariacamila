@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria Camila Suarez — Senior Product Designer · Fucsia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D0D0D;
+    --ink-muted: #3A3A3A;
+    --ink-faint: #7A7A7A;
+    --acid: #F0187E;
+    --acid-dark: #A50D57;
+    --surface: #FAF5F8;
+    --white: #FFFFFF;
+    --border: rgba(13,13,13,0.13);
+    --border-strong: rgba(13,13,13,0.28);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--ink);
+    color: var(--white);
+    padding: 64px 72px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background: var(--acid);
+    opacity: 0.12;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 200px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: var(--acid);
+    opacity: 0.08;
+  }
+
+  .header-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .header-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--acid);
+    margin-bottom: 20px;
+    background: rgba(245,66,168,0.1);
+    padding: 6px 12px;
+    border: 1px solid rgba(245,66,168,0.25);
+    border-radius: 2px;
+  }
+
+  .header-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 86px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+
+  .header-name span {
+    color: var(--acid);
+  }
+
+  .header-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+
+  .role-pill {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.01em;
+  }
+
+  .header-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item:hover { color: var(--acid); }
+
+  .contact-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* METRICS BAND */
+  .metrics-band {
+    background: #F0187E;
+    padding: 28px 72px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .metrics-inner {
+    max-width: 960px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .metric {
+    text-align: center;
+    padding: 0 24px;
+    border-right: 1px solid rgba(255,255,255,0.35);
+  }
+
+  .metric:last-child { border-right: none; }
+
+  .metric-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .metric-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+  }
+
+  /* MAIN LAYOUT */
+  .layout {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 72px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* SECTION STRUCTURE */
+  .section { margin-bottom: 52px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--acid-dark);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    min-width: 28px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SUMMARY */
+  .summary-text {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  .summary-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* EXPERIENCE */
+  .job { margin-bottom: 40px; }
+  .job:last-child { margin-bottom: 0; }
+
+  .job-header { margin-bottom: 14px; }
+
+  .job-company-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+
+  .job-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .job-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  .job-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--acid-dark);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .job-context {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--ink-faint);
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 14px;
+    padding-left: 14px;
+    border-left: 2px solid var(--acid);
+  }
+
+  .job-kpis {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .kpi {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 14px;
+  }
+
+  .kpi-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .kpi-label {
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  .job-bullets { padding-left: 0; list-style: none; }
+
+  .job-bullets li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    padding: 5px 0 5px 18px;
+    position: relative;
+    font-weight: 300;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .job-bullets li:last-child { border-bottom: none; }
+
+  .job-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 14px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--acid);
+    border: 1.5px solid var(--acid-dark);
+  }
+
+  .job-divider {
+    height: 1px;
+    background: linear-gradient(to right, var(--acid), transparent);
+    margin: 36px 0;
+  }
+
+  /* SIDEBAR */
+  .sidebar { }
+
+  .sidebar-section { margin-bottom: 36px; }
+
+  .sidebar-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* SKILLS */
+  .skill-group { margin-bottom: 20px; }
+
+  .skill-group-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    background: var(--white);
+    border: 1px solid var(--border-strong);
+    padding: 4px 10px;
+    border-radius: 2px;
+    line-height: 1.4;
+  }
+
+  .skill-tag.highlight {
+    background: #F0187E;
+    color: #FFFFFF;
+    border-color: #A50D57;
+    font-weight: 500;
+  }
+
+  /* EDUCATION */
+  .edu-item { margin-bottom: 20px; }
+
+  .edu-school {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .edu-degree {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: 2px;
+  }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+  }
+
+  /* CERTS */
+  .cert-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cert-item:last-child { border-bottom: none; }
+
+  .cert-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+
+  .cert-meta {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    font-weight: 300;
+  }
+
+  .cert-status {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-left: 6px;
+  }
+
+  .cert-status.in-progress {
+    background: rgba(240,24,126,0.12);
+    color: #A50D57;
+    border: 1px solid rgba(240,24,126,0.3);
+  }
+
+  .cert-status.completed {
+    background: rgba(13,13,13,0.06);
+    color: var(--ink-faint);
+    border: 1px solid var(--border);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ink);
+    padding: 32px 72px;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .footer-brand span { color: var(--acid); }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-link {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer-link:hover { color: var(--acid); }
+
+  .footer-link svg {
+    width: 12px; height: 12px;
+    opacity: 0.7;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .header { background: #0D0D0D !important; -webkit-print-color-adjust: exact; }
+    .metrics-band { background: #C8F560 !important; -webkit-print-color-adjust: exact; }
+  }
+
+  @media (max-width: 768px) {
+    .header { padding: 40px 24px 36px; }
+    .metrics-band { padding: 20px 24px; }
+    .metrics-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .metric { border-right: none; padding: 0; }
+    .layout { padding: 40px 24px; grid-template-columns: 1fr; gap: 40px; }
+    .job-kpis { grid-template-columns: 1fr; }
+    .footer { padding: 24px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-tag">Available for Senior Design Roles · Bogotá, Colombia | Remote</div>
+    <h1 class="header-name">Maria<br>Camila <span>Suarez</span></h1>
+    <div class="header-roles">
+      <span class="role-pill">Senior Product Designer</span>
+      <span class="role-pill">Lead UX Strategist</span>
+      <span class="role-pill">Design Systems</span>
+      <span class="role-pill">AI-Driven Innovation</span>
+    </div>
+    <div class="header-contact">
+      <a href="mailto:cami.suarez17@gmail.com" class="contact-item">cami.suarez17@gmail.com</a>
+      <span class="contact-dot"></span>
+      <a href="tel:+573108156731" class="contact-item">+57 310 815 6731</a>
+      <span class="contact-dot"></span>
+      <a href="https://www.linkedin.com/in/mariacamilasuarez" target="_blank" class="contact-item">LinkedIn ↗</a>
+      <span class="contact-dot"></span>
+      <a href="https://www.mariacamilaproductdesign.myportfolio.com/work" target="_blank" class="contact-item">Portfolio ↗</a>
+    </div>
+  </div>
+</header>
+
+<!-- METRICS BAND -->
+<div class="metrics-band">
+  <div class="metrics-inner">
+    <div class="metric">
+      <div class="metric-value">+872 bps</div>
+      <div class="metric-label">Cart Conversion<br>Rate vs BAU</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">+14.3%</div>
+      <div class="metric-label">Add-to-Cart<br>Rate vs BAU</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">$400K</div>
+      <div class="metric-label">ARR J&J<br>Platform Contribution</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">50% faster</div>
+      <div class="metric-label">Design System<br>Speed-to-Market</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="layout">
+
+  <!-- LEFT COLUMN -->
+  <main>
+
+    <!-- SUMMARY -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Profile</h2>
+        <div class="section-line"></div>
+      </div>
+      <p class="summary-text">
+        Strategic Senior Product Designer with <strong>6+ years</strong> leading end-to-end UX strategy, design systems governance, and AI-driven product innovation across B2B and B2C platforms. <strong>Proven track record of translating business objectives into measurable outcomes</strong> — including a +872 bps cart conversion lift and 25–50% faster design system speed-to-market for Verizon Value Brands. Expert at aligning cross-functional teams around a shared design vision, driving experimentation programs, and scaling white-label platforms with rigorous design operations. Combines sharp product thinking with AI-augmented workflows to build experiences that are not just usable, but <strong>commercially differentiated</strong>.
+      </p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- JOB 1 -->
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company-row">
+            <span class="job-company">Publicis Sapient</span>
+            <span class="job-date">2025 – 2026</span>
+          </div>
+          <div class="job-title">Senior Experience Designer</div>
+          <p class="job-context">Strategic design lead for Verizon Value Brands white-label ecommerce ecosystem — overseeing UX strategy, design system operations, AI-driven workflow innovation, and conversion optimization across multi-brand acquisition and checkout journeys.</p>
+        </div>
+        <div class="job-kpis">
+          <div class="kpi">
+            <div class="kpi-value">+872 bps</div>
+            <div class="kpi-label">Cart Conversion Rate vs BAU</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-value">+539 bps</div>
+            <div class="kpi-label">Device Gridwall Engagement Rate vs BAU</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-value">+13.21%</div>
+            <div class="kpi-label">Total Orders vs BAU</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-value">25–50%</div>
+            <div class="kpi-label">Faster Design System Speed-to-Market</div>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Led end-to-end UX strategy and design decision-making for Verizon Value Brands white-label digital experiences, owning design quality across responsive ecommerce and customer acquisition journeys.</li>
+          <li>Managed and mentored a team of designers, providing strategic direction, design critique, and execution oversight across simultaneous product initiatives.</li>
+          <li>Built scalable UX frameworks and governance models to enforce multi-brand consistency, reducing design debt and improving operational efficiency.</li>
+          <li>Pioneered AI-driven design operations by integrating Claude and custom MCPs into Design System maintenance workflows, achieving 25–50% faster speed-to-market.</li>
+          <li>Directed experimentation strategy leveraging A/B testing insights to optimize engagement, add-to-cart, and checkout conversion.</li>
+          <li>Partnered cross-functionally with Product, Engineering, Research, and Analytics to align customer experience strategy with business goals and OKRs.</li>
+        </ul>
+      </div>
+
+      <div class="job-divider"></div>
+
+      <!-- JOB 2 -->
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company-row">
+            <span class="job-company">Nearsure</span>
+            <span class="job-date">2022 – 2025</span>
+          </div>
+          <div class="job-title">Senior Product Designer</div>
+          <p class="job-context">End-to-end product design and UX strategy for enterprise clients including Unilever, Johnson & Johnson, Purina, Parkmobile/EasyPark, and Golfzing — leading design teams, driving product roadmaps, and delivering measurable business outcomes.</p>
+        </div>
+        <div class="job-kpis">
+          <div class="kpi">
+            <div class="kpi-value">+2.4%</div>
+            <div class="kpi-label">Signup Rate Lift (~1M Users)</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-value">3×</div>
+            <div class="kpi-label">J&J Retailer Network Growth</div>
+          </div>
+        </div>
+        <ul class="job-bullets">
+          <li>Led product strategy and UX design for EasyPark/Parkmobile acquisition funnel — executing a dual-version research plan that lifted signup rate by 2.4% (+1M users).</li>
+          <li>Owned end-to-end product design for J&J platform expansion ($400K ARR), enabling a 3× growth in retailer network including CVS and Kroger.</li>
+          <li>Defined and maintained design systems for multiple clients, ensuring consistent, scalable, and brand-compliant component libraries across cross-functional teams.</li>
+          <li>Conducted UX research, usability testing, and competitive analysis to surface actionable insights and inform prioritization decisions.</li>
+          <li>Led stakeholder reviews using hypothesis-driven design presentations, translating complex user data into product strategy recommendations.</li>
+          <li>Developed product roadmaps, business cases (cost-benefit analysis, ROI projections), and KPI frameworks aligned with client OKRs.</li>
+        </ul>
+      </div>
+
+      <div class="job-divider"></div>
+
+      <!-- JOB 3 -->
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company-row">
+            <span class="job-company">Nearsure</span>
+            <span class="job-date">2021 – 2022</span>
+          </div>
+          <div class="job-title">Product Designer</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Designed end-to-end user flows advocating for user needs while meeting business objectives across multiple B2B and B2C client engagements.</li>
+          <li>Partnered with Product Management to define interaction models, user flows, and information architecture for new product features.</li>
+          <li>Delivered low and high-fidelity wireframes, interactive prototypes, personas, journey maps, and feature documentation.</li>
+        </ul>
+      </div>
+
+      <div class="job-divider"></div>
+
+      <!-- JOB 4 -->
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company-row">
+            <span class="job-company">Channge Consulting</span>
+            <span class="job-date">2020 – 2021</span>
+          </div>
+          <div class="job-title">Creative & Experience Content Expert</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Led user discovery research for event planning platform — identified key pain points in venue search and date coordination.</li>
+          <li>Rapid prototyped and iterated on product concepts through low and high-fidelity wireframes based on user feedback.</li>
+          <li>Researched UI/UX trends and competitor strategies to inform product differentiation and design direction.</li>
+        </ul>
+      </div>
+
+      <div class="job-divider"></div>
+
+      <!-- JOB 5 -->
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company-row">
+            <span class="job-company">Avianca</span>
+            <span class="job-date">2018 – 2019</span>
+          </div>
+          <div class="job-title">Visual Design Intern</div>
+        </div>
+        <ul class="job-bullets">
+          <li>Contributed to advertising campaign design and UX strategy, supporting brand consistency and conversion-oriented visual systems.</li>
+          <li>Applied analytics data to test and iterate on new design patterns for marketing materials, improving engagement performance.</li>
+        </ul>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- SKILLS -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Core Competencies</div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">UX & Product Strategy</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">UX Strategy</span>
+          <span class="skill-tag highlight">Product Thinking</span>
+          <span class="skill-tag">Information Architecture</span>
+          <span class="skill-tag">Jobs-to-be-Done</span>
+          <span class="skill-tag">Customer Journey Mapping</span>
+          <span class="skill-tag">Service Design</span>
+          <span class="skill-tag">Agile UX</span>
+          <span class="skill-tag">Lean UX</span>
+          <span class="skill-tag">OKR for UX</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Design & Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Design Systems</span>
+          <span class="skill-tag">Component Governance</span>
+          <span class="skill-tag">Design Operations</span>
+          <span class="skill-tag">White-Label Platforms</span>
+          <span class="skill-tag">Responsive Design</span>
+          <span class="skill-tag">Accessibility (WCAG)</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">AI & Emerging Tech</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Claude API</span>
+          <span class="skill-tag highlight">Custom MCP Integrations</span>
+          <span class="skill-tag">AI-Driven UX</span>
+          <span class="skill-tag">Claude Code</span>
+          <span class="skill-tag">Workflow Automation</span>
+          <span class="skill-tag">Predictive UX</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Analytics & Optimization</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">A/B Testing</span>
+          <span class="skill-tag">Conversion Rate Optimization</span>
+          <span class="skill-tag">Funnel Analysis</span>
+          <span class="skill-tag">Mixpanel</span>
+          <span class="skill-tag">Google Analytics</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Tools</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">Figma</span>
+          <span class="skill-tag">Framer</span>
+          <span class="skill-tag">Maze</span>
+          <span class="skill-tag">Dovetail</span>
+          <span class="skill-tag">Miro</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Confluence</span>
+          <span class="skill-tag">Adobe Suite</span>
+          <span class="skill-tag">HTML5/CSS3</span>
+          <span class="skill-tag highlight">SQL</span>
+          <span class="skill-tag highlight">Claude</span>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="skill-group-name">Leadership</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Cross-Functional Leadership</span>
+          <span class="skill-tag">Design Team Mentorship</span>
+          <span class="skill-tag">Stakeholder Management</span>
+          <span class="skill-tag">Workshop Facilitation</span>
+          <span class="skill-tag">Roadmap Development</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Education</div>
+
+      <div class="edu-item">
+        <div class="edu-school">Javeriana University</div>
+        <div class="edu-degree">BA Industrial Design</div>
+        <div class="edu-year">Bogotá · 2014–2019</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-school">Universidad de La Sabana</div>
+        <div class="edu-degree">AA Project Management<br>AA Digital Marketing</div>
+        <div class="edu-year">Bogotá · 2020</div>
+      </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="sidebar-section">
+      <div class="sidebar-label">Certifications</div>
+
+      <div class="cert-item">
+        <div class="cert-name">
+          IBM AI Product Manager Specialization
+          <span class="cert-status in-progress">In Progress</span>
+        </div>
+        <div class="cert-meta">IBM / Coursera · 2025–Present</div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-name">Strategic Management and Innovation</div>
+        <div class="cert-meta">Copenhagen Business School · 2026 <span class="cert-status completed">Completed</span></div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-name">Professional Scrum with UX</div>
+        <div class="cert-meta">Scrum.org · 2022 <span class="cert-status completed">Completed</span></div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-name">UXDX USA Conference</div>
+        <div class="cert-meta">UXDX · 2022 <span class="cert-status completed">Completed</span></div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-name">Mobile Apps Development</div>
+        <div class="cert-meta">Google / Complutense University · 2020 <span class="cert-status completed">Completed</span></div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-name">UX: Usability and User Experience</div>
+        <div class="cert-meta">IDx · 2019 <span class="cert-status completed">Completed</span></div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">Maria Camila <span>Suarez</span></div>
+    <div class="footer-links">
+      <a href="mailto:cami.suarez17@gmail.com" class="footer-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 4l7 5 7-5"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/mariacamilasuarez" target="_blank" class="footer-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="14" rx="2"/><path d="M5 7v5M5 5v.01M8 12V9a2 2 0 014 0v3M8 7v5"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.mariacamilaproductdesign.myportfolio.com/work" target="_blank" class="footer-link">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="14" height="10" rx="1.5"/><path d="M5 4V3a1 1 0 011-1h4a1 1 0 011 1v1"/></svg>
+        Portfolio
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
